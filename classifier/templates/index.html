@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom Taxonomy Classifier</title>
+</head>
+<body>
+    <h1>Bloom Taxonomy Classifier</h1>
+    <form method="POST" action="{% url 'index' %}">
+        {% csrf_token %}
+        <label for="question">Enter your question:</label><br>
+        <textarea id="question" name="question" rows="4" cols="50"></textarea><br><br>
+        <input type="submit" value="Classify">
+    </form>
+    <br>
+    {% if question_text %}
+        <h3>Question:</h3>
+        <p>{{ question_text }}</p>
+        <h3>Classification Result:</h3>
+        <p>{{ result }}</p>
+    {% endif %}
+    <br>
+    <br>
+    <br>
+    <h2>Visualisations</h2>
+    <br>
+    <form method="POST" action="{% url 'Vis1' %}">
+        {% csrf_token %}
+        <input type="submit" value="Questions distribution 1">
+    </form>
+    <br>
+    <form method="POST" action="{% url 'Vis2' %}">
+        {% csrf_token %}
+        <input type="submit" value="Questions distribution 2">
+    </form>
+    <br>
+    <form method="POST" action="{% url 'Vis3' %}">
+        {% csrf_token %}
+        <input type="submit" value="Performance Analysis 1">
+    </form>
+    <br>
+    <form method="POST" action="{% url 'Vis4' %}">
+        {% csrf_token %}
+        <input type="submit" value="Performance Analysis 2">
+    </form>
+
+</body>
+</html>
